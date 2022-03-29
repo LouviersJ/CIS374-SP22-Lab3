@@ -50,7 +50,7 @@ namespace Lab3
             Console.WriteLine(wst);
             Console.WriteLine("Best Case");
             Console.WriteLine(best);
-            Console.WriteLine("/n");
+            Console.WriteLine();
 
 
             Console.WriteLine("SELECTION SORT");
@@ -76,7 +76,7 @@ namespace Lab3
             Console.WriteLine(wst);
             Console.WriteLine("Best Case");
             Console.WriteLine(best);
-            Console.WriteLine("/n");
+            Console.WriteLine();
 
 
             Console.WriteLine("QUICK SORT");
@@ -102,7 +102,7 @@ namespace Lab3
             Console.WriteLine(wst);
             Console.WriteLine("Best Case");
             Console.WriteLine(best);
-            Console.WriteLine("/n");
+            Console.WriteLine();
 
 
             Console.WriteLine("MERGE SORT");
@@ -128,7 +128,7 @@ namespace Lab3
             Console.WriteLine(wst);
             Console.WriteLine("Best Case");
             Console.WriteLine(best);
-            Console.WriteLine("/n");
+            Console.WriteLine();
 
 
             Console.WriteLine("BUCKET SORT");
@@ -154,7 +154,7 @@ namespace Lab3
             Console.WriteLine(wst);
             Console.WriteLine("Best Case");
             Console.WriteLine(best);
-            Console.WriteLine("/n");
+            Console.WriteLine();
 
 
             Console.WriteLine("RADIX SORT");
@@ -180,7 +180,7 @@ namespace Lab3
             Console.WriteLine(wst);
             Console.WriteLine("Best Case");
             Console.WriteLine(best);
-            Console.WriteLine("/n");
+            Console.WriteLine();
 
         }
 
