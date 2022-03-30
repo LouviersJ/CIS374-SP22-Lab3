@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 
 namespace Lab3.Helpers
-{
-    public enum SortDirection
+{    public enum SortDirection
     {
         Ascending = 0,
         Descending = 1

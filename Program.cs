@@ -10,27 +10,33 @@ namespace Lab3
         static void Main(string[] args)
         {
             List<int> intList = GenerateRandomIntList(1000, 50000);
-            List<int> revIntList = intList;
+            List<int> revIntList = new List<int>(intList);
             revIntList.Sort();
             List<int> nearSort = new List<int>(revIntList);
-            for (int i = 0; i >= 0.0125* nearSort.Count; i++)
+            revIntList.Reverse();
+            for (int i = 0; i <= 0.0125 * nearSort.Count; i++)
             {
                 int end = (int)(0.025 * nearSort.Count);
+                end -= i;
                 int temp = nearSort[i];
                 nearSort[i] = nearSort[end];
                 nearSort[end] = temp;
             }
-            revIntList.Reverse();
-
+            
 ;           List<double> doubleList = GenerateRandomDoubleList(100, 500);
 
+            Console.WriteLine("RANDOM LIST");
             Console.WriteLine("[{0}]", string.Join(", ", intList.ToArray()));
+            Console.WriteLine("REVERSE LIST");
+            Console.WriteLine("[{0}]", string.Join(", ", revIntList.ToArray()));
+            Console.WriteLine("NEAR SORTED LIST");
+            Console.WriteLine("[{0}]", string.Join(", ", nearSort.ToArray()));
 
-         
+
             Console.WriteLine("INSERTION SORT");
             InsertionSort<int> insertionSort = new InsertionSort<int>();
             double avg = 0;
-            // double wst = 0;
+            double wst = 0;
             double best = 0;
             for (int i = 0; i < 11; i++)
             {
@@ -38,16 +44,16 @@ namespace Lab3
                 List<int> intListCopy = new List<int>(intList);
                 List<int> nearSortCopy = new List<int>(nearSort);
                 avg += TimeSort(insertionSort, intListCopy);
-                // wst += TimeSort(insertionSort, revIntListCopy);
+                wst += TimeSort(insertionSort, revIntListCopy);
                 best += TimeSort(insertionSort, nearSortCopy); ;
             }
             avg /= 11;
-            // wst /= 11;
+            wst /= 11;
             best /= 11;
             Console.WriteLine("Average Case");
             Console.WriteLine(avg);
             Console.WriteLine("Worst Case");
-            // Console.WriteLine(wst);
+            Console.WriteLine(wst);
             Console.WriteLine("Best Case");
             Console.WriteLine(best);
             Console.WriteLine();
@@ -56,7 +62,7 @@ namespace Lab3
             Console.WriteLine("SELECTION SORT");
             SelectionSort<int> selectionSort = new SelectionSort<int>();
             avg = 0;
-            // wst = 0;
+            wst = 0;
             best = 0;
             for (int i = 0; i < 11; i++)
             {
@@ -64,16 +70,16 @@ namespace Lab3
                 List<int> intListCopy = new List<int>(intList);
                 List<int> nearSortCopy = new List<int>(nearSort);
                 avg += TimeSort(selectionSort, intListCopy);
-                // wst += TimeSort(selectionSort, revIntListCopy);
+                wst += TimeSort(selectionSort, revIntListCopy);
                 best += TimeSort(selectionSort, nearSortCopy); ;
             }
             avg /= 11;
-            // wst /= 11;
+            wst /= 11;
             best /= 11;
             Console.WriteLine("Average Case");
             Console.WriteLine(avg);
             Console.WriteLine("Worst Case");
-            // Console.WriteLine(wst);
+            Console.WriteLine(wst);
             Console.WriteLine("Best Case");
             Console.WriteLine(best);
             Console.WriteLine();
@@ -82,24 +88,24 @@ namespace Lab3
             Console.WriteLine("QUICK SORT");
             QuickSort<int> quickSort = new QuickSort<int>();
             avg = 0;
-            // wst = 0;
+            wst = 0;
             best = 0;
-            for ( int i = 0; i < 11; i++)
+            for (int i = 0; i < 11; i++)
             {
                 List<int> revIntListCopy = new List<int>(revIntList);
                 List<int> intListCopy = new List<int>(intList);
                 List<int> nearSortCopy = new List<int>(nearSort);
-                avg += TimeSort (quickSort, intListCopy);
-                // wst += TimeSort(quickSort, revIntListCopy);
+                avg += TimeSort(quickSort, intListCopy);
+                wst += TimeSort(quickSort, revIntListCopy);
                 best += TimeSort(quickSort, nearSortCopy); ;
             }
             avg /= 11;
-            // wst /= 11;
+            wst /= 11;
             best /= 11;
             Console.WriteLine("Average Case");
             Console.WriteLine(avg);
             Console.WriteLine("Worst Case");
-            // Console.WriteLine(wst);
+            Console.WriteLine(wst);
             Console.WriteLine("Best Case");
             Console.WriteLine(best);
             Console.WriteLine();
@@ -108,50 +114,50 @@ namespace Lab3
             Console.WriteLine("MERGE SORT");
             MergeSort<int> mergeSort = new MergeSort<int>();
             avg = 0;
-            // wst = 0;
+            wst = 0;
             best = 0;
             for (int i = 0; i < 11; i++)
             {
                 List<int> revIntListCopy = new List<int>(revIntList);
                 List<int> intListCopy = new List<int>(intList);
                 List<int> nearSortCopy = new List<int>(nearSort);
-                avg += TimeSort (mergeSort, intListCopy);
-                // wst += TimeSort(mergeSort, revIntListCopy);
+                avg += TimeSort(mergeSort, intListCopy);
+                wst += TimeSort(mergeSort, revIntListCopy);
                 best += TimeSort(mergeSort, nearSortCopy); ;
             }
             avg /= 11;
-            // wst /= 11;
+            wst /= 11;
             best /= 11;
             Console.WriteLine("Average Case");
             Console.WriteLine(avg);
             Console.WriteLine("Worst Case");
-            // Console.WriteLine(wst);
+            Console.WriteLine(wst);
             Console.WriteLine("Best Case");
             Console.WriteLine(best);
             Console.WriteLine();
 
 
-            Console.WriteLine("BUCKET SORT");
-            BucketSort bucketSort = new BucketSort();
+            Console.WriteLine("COUNTING SORT");
+            CountingSort countingSort = new CountingSort();
             avg = 0;
-            // wst = 0;
+            wst = 0;
             best = 0;
             for (int i = 0; i < 11; i++)
             {
                 List<int> revIntListCopy = new List<int>(revIntList);
                 List<int> intListCopy = new List<int>(intList);
                 List<int> nearSortCopy = new List<int>(nearSort);
-                avg += TimeSort(bucketSort, intListCopy);
-                // wst += TimeSort(bucketSort, revIntListCopy);
-                best += TimeSort(bucketSort, nearSortCopy); 
+                avg += TimeSort(countingSort, intListCopy);
+                wst += TimeSort(countingSort, revIntListCopy);
+                best += TimeSort(countingSort, nearSortCopy);
             }
             avg /= 11;
-            // wst /= 11;
+            wst /= 11;
             best /= 11;
             Console.WriteLine("Average Case");
             Console.WriteLine(avg);
             Console.WriteLine("Worst Case");
-            // Console.WriteLine(wst);
+            Console.WriteLine(wst);
             Console.WriteLine("Best Case");
             Console.WriteLine(best);
             Console.WriteLine();
@@ -160,7 +166,7 @@ namespace Lab3
             Console.WriteLine("RADIX SORT");
             RadixSort radixSort = new RadixSort();
             avg = 0;
-            // wst = 0;
+            wst = 0;
             best = 0;
             for (int i = 0; i < 11; i++)
             {
@@ -168,19 +174,20 @@ namespace Lab3
                 List<int> intListCopy = new List<int>(intList);
                 List<int> nearSortCopy = new List<int>(nearSort);
                 avg += TimeSort(radixSort, intListCopy);
-                // wst += TimeSort(radixSort, revIntListCopy);
+                wst += TimeSort(radixSort, revIntListCopy);
                 best += TimeSort(radixSort, nearSortCopy); ;
             }
             avg /= 11;
-            // wst /= 11;
+            wst /= 11;
             best /= 11;
             Console.WriteLine("Average Case");
             Console.WriteLine(avg);
             Console.WriteLine("Worst Case");
-            // Console.WriteLine(wst);
+            Console.WriteLine(wst);
             Console.WriteLine("Best Case");
             Console.WriteLine(best);
             Console.WriteLine();
+
 
         }
 
